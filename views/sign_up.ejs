@@ -1,0 +1,34 @@
+<!-- Main Container -->
+<div id="container_sign-up">
+    <!-- Heading Of Sign_Up Page -->
+    <div id="heading">
+        <h1>Sign Up</h1>
+    </div>
+    <!-- Form_Container -->
+    <div class="form-container">
+        <form action="/users/create" method="POST">
+            <!-- For Name Input -->
+            <input type="text" name="name" placeholder="Enter Your Name" required>
+            <!-- For Birthday Input -->
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday">   
+            <!-- Radio Button For Check Gender -->
+            <h3>Gender:</h3>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+            <br>
+            <br>
+            <!-- For Email_Id Input -->
+            <input type="email" name="email" placeholder="Enter Your Email_Id" required>
+            <!-- For Password -->
+            <input type="password" name="password" placeholder="Password" required>
+            <!-- For Verify Password -->
+            <input type="password" name="password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+    </form>
+    </div>
+</div>
