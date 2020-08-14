@@ -5,4 +5,6 @@ const usersController=require('../controllers/users_controller');
 // url:localhost:8000/users/sign-up
 router.get('/sign-up',usersController.signUp);
 router.get('/sign-in',usersController.signIn);
+// url:localhost:8000/users/create
+router.post('/create',usersController.create);
 module.exports=router;
