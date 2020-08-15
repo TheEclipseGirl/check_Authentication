@@ -1,1 +1,11 @@
 <h1>Shalini's Home Page</h1>
+<% if(locals.user){%>
+<section id="details">
+    <p><%=locals.user.name%></p> 
+    <p><%=locals.user.birthday%></p> 
+    <p><%=locals.user.gender%></p> 
+    <p><%=locals.user.email%></p> 
+    <p><%=locals.user.createdAt%></p> 
+    <p><%=locals.user.updatedAt%></p> 
+</section>
+<% } %>

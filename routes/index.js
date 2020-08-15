@@ -1,7 +1,9 @@
 const express=require('express');
 const router=express.Router();
+const passport=require('passport');
 // Home Controller Loaded
 const homeController=require('../controllers/home_controller');
+
 
 console.log('Well!! Router Is Loaded');
 
@@ -9,7 +11,7 @@ console.log('Well!! Router Is Loaded');
 router.use('/users',require('./users'));
 
 // home function called for url 
-router.get('/',homeController.home);
+router.get('/',passport.setAuthenticatedUser,homeController.home);
 
 
 module.exports=router;

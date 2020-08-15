@@ -14,15 +14,20 @@ module.exports.signIn=function(req,res){
 }
 // create user in Database
 module.exports.create=function(req,res){
+
+    if(req.body.password!=req.body.verify_password )
+    {
+        return res.redirect('back');
+    }
+
     User.findOne({email:req.body.email},function(err,user){
         if(err){
-            console.log('Errror to find in USer');
+            console.log('Errror to find in User');
             return;
         }
         if(user){
-            res.cookie('user_present',true);
-            console.log(req.cookies);
-            return res.redirect('back');
+            // To Refresh If user is alreay present
+            return res.redirect('/users/sign-in');
         }else{
             bcrypt.hash(req.body.password, 10, function(err, hash) {
                 // Store hash in database
@@ -44,3 +49,9 @@ module.exports.create=function(req,res){
         }
     });
 }
+
+// create Session in Database
+module.exports.createSession=function(req,res){
+   return res.redirect('/');
+}
+

@@ -5,7 +5,11 @@ const expressLayouts=require('express-ejs-layouts');
 const db=require('./config/mongoose');
 const bcrypt=require('bcrypt');
 const cookieParser = require('cookie-parser');
-
+const session=require('express-session');
+const passport=require('passport');
+const { Strategy } = require('passport');
+const passportLocal=require('./config/passport-local-Strategy');
+const MongoStore=require('connect-mongo')(session);
 
 // For cookie-parser
 app.use(cookieParser());
@@ -14,7 +18,26 @@ app.use(express.urlencoded({ useNewUrlParser: true }));
 
 // middle of express Layouts
 app.use(expressLayouts);
-
+// Use to create session
+app.use(session({
+    name:'Auc',
+    secret:'alpha',
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*60*10)
+    },
+    store:new MongoStore({
+        mongooseConnection:db,
+        autoRemove:'disabled'
+    },function(err){
+       console.log(err || 'connecting To MongoDb ');
+    })
+    
+   
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 //routing middleware
 app.use('/', require('./routes'));
 
