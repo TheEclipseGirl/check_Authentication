@@ -10,6 +10,21 @@ const passport=require('passport');
 const { Strategy } = require('passport');
 const passportLocal=require('./config/passport-local-Strategy');
 const MongoStore=require('connect-mongo')(session);
+const nodemailer=require('nodemailer');
+const sassMiddleware=require('node-sass-middleware');
+// FOR SASS
+app.use(sassMiddleware({
+    src:'./assets/scss',
+    dest:'./assets/css',
+    debug:true,
+    outputStyle:'extended',
+    prefix:'/css'
+}));
+
+// assets middleware
+app.use(express.static('./assets'));
+
+
 
 // For cookie-parser
 app.use(cookieParser());
@@ -18,6 +33,8 @@ app.use(express.urlencoded({ useNewUrlParser: true }));
 
 // middle of express Layouts
 app.use(expressLayouts);
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 // Use to create session
 app.use(session({
     name:'Auc',

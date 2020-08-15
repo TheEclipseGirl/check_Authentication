@@ -1,0 +1,46 @@
+#container_sign-in{
+     margin: 70px;
+    h1{
+       margin-bottom: 30px;
+    }
+}
+.form-container {
+    background-color: rgb(65, 72, 161);
+    width: 80%;
+    height: 50%;
+     
+
+    form{
+        display: flex;
+        flex-direction: column;
+        input{
+            margin: 10px;
+            width: 70%;
+            padding: 10px;
+            width: 94%;
+            box-shadow: inset 5px 5px 24px 5px rgb(234, 240, 243);
+            border-radius: 15px;
+           
+         }
+         button{
+            width: 70%;
+            margin-left:10px;
+            width: 94%;
+         }
+    }
+}
+.forgetPassword{
+
+    width: 65%;
+    a{
+        // background-color: cadetblue;
+        color: white;
+        margin-left: -10px;
+        text-decoration: none;
+    }
+
+    
+}
+.forgetPassword a:hover{
+   color: gold;
+}

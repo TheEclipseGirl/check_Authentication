@@ -17,6 +17,8 @@ router.post('/create-session',passport.authenticate('local',{
 }),usersController.createSession);
 // url:localhost:8000/users/destroySession
 router.get('/destroy-session',passport.checkAuthentication,usersController.destroySession);
-
-
+// url:localhost:8000/users/forget
+router.get('/forget',passport.notAuthenticated,usersController.forgetPassword)
+// url:localhost:8000/users/reset
+router.post('/reset',passport.notAuthenticated,usersController.emailReset)
 module.exports=router;

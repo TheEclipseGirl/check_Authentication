@@ -1,0 +1,20 @@
+#password_reminder {
+  color: #700e0e;
+  margin-top: -20px;
+  font-size: small; }
+
+#password_match {
+  color: #700e0e;
+  margin-top: -20px;
+  font-size: small; }
+
+#container_sign-up {
+  margin: 70px; }
+
+.form-container {
+  background-color: #4148a1;
+  padding: 30px;
+  padding-top: 40px;
+  margin-top: 25px; }
+  .form-container input {
+    border-radius: 15px; }

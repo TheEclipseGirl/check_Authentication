@@ -1,12 +1,19 @@
+<link rel="stylesheet" href="/css/signIn.css">
 
-<div id="container_sign-in">
+<div id="container_sign-in" class="col-lg-5 col-md-7" >
+
     <h1>Sign-In</h1>
 
     <div class="form-container">
         <form action="/users/create-session" method="POST">
-            <input type="email" name="email" placeholder="Your Email_Id" required>
-            <input type="password" name="password" placeholder="Your Password" required>
-            <button type="submit">Sign-In</button>
+           <input type="email" name="email" placeholder="Your Email_Id" class="form-control"  required>
+            <input type="password" name="password" placeholder="Your Password" class="form-control"   required>
+            <button type="submit" class="btn btn-success">Sign-In</button>
         </form>
+
+        <div class=" forgetPassword  d-flex flex-row-reverse bd-highlight ">
+            <a href="/users/forget">Forget Password</a>
+        </div>
     </div>
+
 </div>

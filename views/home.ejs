@@ -1,4 +1,8 @@
-<h1>Shalini's Home Page</h1>
+<link rel="stylesheet" href="/css/home.css">
+<section id="container">
+<h1>
+    !!  Welcome To Home  !! 
+</h1>
 <% if(locals.user){%>
 <section id="details">
     <p><%=locals.user.name%></p> 
@@ -9,3 +13,4 @@
     <p><%=locals.user.updatedAt%></p> 
 </section>
 <% } %>
+</section>

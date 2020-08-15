@@ -1,5 +1,6 @@
 const User=require('../models/users');
 const bcrypt=require('bcrypt');
+const nodemailer=require('nodemailer');
 // Render For SignUp
 module.exports.signUp=function(req,res){
     return res.render('sign_up',{
@@ -12,6 +13,17 @@ module.exports.signIn=function(req,res){
         title:'Passport Authentication | Sign In'
     });
 }
+
+
+
+// Forget Password Page Render
+module.exports.forgetPassword=function(req,res){
+    return res.render('forget_password',{
+        title:'Authentication | Forget'
+    });
+}
+    
+
 // create user in Database
 module.exports.create=function(req,res){
 
@@ -59,4 +71,47 @@ module.exports.destroySession=function(req,res){
     req.logout();
     return res.redirect('/');
 }
+// Send Reset Email
+module.exports.emailReset=function(req,res){
+    User.findOne({email:req.body.email},function(err,user){
+        if(err){
+            console.log('Error to find User');
+            return;
+        }
+        if(!user){
+            // TODO
+            return res.redirect('back');
+        }else{
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                     auth: {
+                     user: 'shalinibvp.1996@gmail.com',
+                     pass: 'shalini@12345'
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
+              });
+              
+                let mailOptions = {
+                    from: 'shalinibvp.1996@gmail.com',
+                    to: req.body.email,
+                    subject: 'Sending Email using Node.js',
+                    text: 'I Got Ur Email_ID!!'
+              };
+              
+              transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                    console.log(error);
+                    } else {
+                    console.log('Email sent: ' + info.response);
+                    }
+
+                
+                });
+                return res.redirect('/users/sign-in');
+        }
+    })
+}
+
 

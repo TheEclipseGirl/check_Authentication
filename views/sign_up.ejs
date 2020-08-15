@@ -1,34 +1,43 @@
+<link rel="stylesheet" href="/css/signUp.css">
+<script src="/js/sign_up.js"></script>
 <!-- Main Container -->
-<div id="container_sign-up">
+<div id="container_sign-up" class="mx-auto col-9 col-lg-4 col-md-5" >
     <!-- Heading Of Sign_Up Page -->
-    <div id="heading">
+    <div id="heading" class="mb-7" >
         <h1>Sign Up</h1>
     </div>
     <!-- Form_Container -->
     <div class="form-container">
-        <form action="/users/create" method="POST">
-            <!-- For Name Input -->
-            <input type="text" name="name" placeholder="Enter Your Name" required>
+        <form action="/users/create" class="d-flex flex-column mb-5" method="POST">
+            <!-- For  Name Input -->
+            <input type="text" name="name" placeholder="Enter Your Name" class="mb-2 form-control"  required>
             <!-- For Birthday Input -->
-            <label for="birthday">Birthday:</label>
-            <input type="date" id="birthday" name="birthday" required>   
+            <label for="birthday"><h4 class="text-white-50">Birthday:</h4></label>
+            <input type="date" id="birthday" name="birthday" class="mb-4 form-control" required>   
+
             <!-- Radio Button For Check Gender -->
-            <h3>Gender:</h3>
-            <input type="radio" id="male" name="gender" value="male" required>
-            <label for="male">Male</label><br>
+            <h4 class="text-white-50">Gender:</h4>
+            <span>
+            <input type="radio" id="male" name="gender" value="male"  required>
+            <label for="male" class="text-white-50">Male</label>
             <input type="radio" id="female" name="gender" value="female" required>
-            <label for="female">Female</label><br>
+            <label for="female" class="text-white-50">Female</label>
             <input type="radio" id="other" name="gender" value="other" required>
-            <label for="other">Other</label>
-            <br>
-            <br>
+            <label for="other" class="text-white-50">Other</label>
+            </span>
+            
             <!-- For Email_Id Input -->
-            <input type="email" name="email" placeholder="Enter Your Email_Id" required>
+            <input type="email" name="email" placeholder="Enter Your Email_Id" class="mb-4 form-control"  required>
             <!-- For Password -->
-            <input type="password" name="password" placeholder="Password" required>
-            <!-- For Verify Password -->
-            <input type="password" name="verify_password" placeholder="Confirm Password" required>
-            <button type="submit">Sign Up</button>
+            <input id="password-field" type="password" name="password" placeholder="Password" class="mb-4 form-control"  required>
+            <p id="password_reminder">
+                Enter a combination of atleast 6 numbers,letters,and special characters.
+            </p>
+           <!-- For Verify Password -->
+            <input id ="verify_password" type="password" name="verify_password" placeholder="Confirm Password" class="mb-4 form-control"  required>
+            <!-- check password and verify password is matching or not? -->
+            <p id="password_match">Please enter same password</p>
+            <button type="submit" class="btn btn-success">Sign Up</button>
     </form>
     </div>
 </div>
