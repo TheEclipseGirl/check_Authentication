@@ -1,4 +1,7 @@
+// Import Mongoose for Db
 const mongoose=require('mongoose');
+
+// Made Schema
 const userSchema=new mongoose.Schema({
     email:{
         type:String,
@@ -15,15 +18,16 @@ const userSchema=new mongoose.Schema({
     },
     gender:{
         type:String,
-        required:true
+        required:false
     },
     birthday:{
         type:Date,
-        required:true
+        required:false
     }
 },{
     timestamps:true
 
 });
+
 const User=mongoose.model('User',userSchema);
 module.exports=User;

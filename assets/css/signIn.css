@@ -31,3 +31,13 @@
 
 .forgetPassword a:hover {
   color: gold; }
+
+#google {
+  color: thistle;
+  font-size: 27px;
+  margin-left: 30px; }
+  #google a {
+    text-decoration: none; }
+    #google a small {
+      color: silver;
+      font-size: 15px; }

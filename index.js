@@ -12,6 +12,10 @@ const passportLocal=require('./config/passport-local-Strategy');
 const MongoStore=require('connect-mongo')(session);
 const nodemailer=require('nodemailer');
 const sassMiddleware=require('node-sass-middleware');
+const flash=require('connect-flash');
+const customMware=require('./config/middleware');
+const passportGoogle=require('./config/passport.google-oauth2-strategy');
+
 // FOR SASS
 app.use(sassMiddleware({
     src:'./assets/scss',
@@ -23,9 +27,6 @@ app.use(sassMiddleware({
 
 // assets middleware
 app.use(express.static('./assets'));
-
-
-
 // For cookie-parser
 app.use(cookieParser());
 // for getting Schema OR Form Details (Key Value Pairs)
@@ -55,6 +56,11 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+//  Notification For Flash
+app.use(flash());
+app.use(customMware.setFlash);
+
 //routing middleware
 app.use('/', require('./routes'));
 

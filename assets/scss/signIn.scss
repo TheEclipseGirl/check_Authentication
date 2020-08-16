@@ -44,3 +44,19 @@
 .forgetPassword a:hover{
    color: gold;
 }
+#google {
+    // background-color: indigo;
+   color: thistle;
+    font-size: 27px;
+    margin-left: 30px;
+    a{
+        text-decoration: none;
+
+        small{
+            color: silver;
+            font-size: 15px;
+            
+        }
+    }
+    
+}

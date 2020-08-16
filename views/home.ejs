@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="/css/home.css">
 <section id="container">
 <h1>
-    !!  Welcome To Home  !! 
+    !!  Welcome To India  !! 
 </h1>
+
+    
+
 <% if(locals.user){%>
 <section id="details">
     <p><%=locals.user.name%></p> 
@@ -13,4 +16,7 @@
     <p><%=locals.user.updatedAt%></p> 
 </section>
 <% } %>
+
+
 </section>
+<button id="button" class="btn btn-warning col-lg-5 col-md-7"><a href="/users/reset">Reset Password</a></button>

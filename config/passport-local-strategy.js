@@ -6,15 +6,18 @@ const bcrypt = require('bcrypt');
 
 // for Authentication of user
 passport.use(new LocalStrategy({
-        usernameField: 'email'
+        usernameField: 'email',
+        passReqToCallback:true
     },
-    function(email, password, done){
+    function(req,email, password, done){
         User.findOne({email: email}, function(err, user){
             if(err){
                 console.log('Error in finding user --> PASSPORT');
+                req.flash('error',err);
                 return done(err);
             }
             if(!user){
+                req.flash('error','Invalid Username or Password');
                 console.log('Invalid Username');
                 return done(null, false);
             }
@@ -25,6 +28,7 @@ passport.use(new LocalStrategy({
                 } else {
                     // Passwords don't matching Code
                     console.log('Invalid Password');
+                    req.flash('error','Invalid Username or Password');
                     return done(null, false);
                 } 
             });
@@ -51,6 +55,7 @@ passport.deserializeUser(function(id, done){
 // user authenticated or not ?
 passport.checkAuthentication = function(req, res, next){
     if(req.isAuthenticated()){
+        req.flash('success','Authenticated User');
         return next();
     }
     return res.redirect('/users/sign-in');

@@ -5,10 +5,51 @@
         </title>
         <!--Bootstrap CSS only -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <!-- Noty CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+       <!-- Noty SCRIPT  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <!-- Font-Awesome -->
+        <script src="https://kit.fontawesome.com/c90807128e.js" crossorigin="anonymous"></script>
         <%- style%>
     </head>
   
     <%- include('_navbar.ejs');%>
+
+    
+        <% if(flash.success && flash.success.length>0){%>
+            <script>
+                new Noty({
+                    
+                    theme: 'metroui',
+                    text: '<%= flash.success%>',
+                  
+                    type:'success',
+                    layout: 'topLeft',
+                    timeout:3500
+
+                 }).show();
+
+            </script>
+        <%}%>
+
+        <% if(flash.error && flash.error.length>0){%>
+            <script>
+                new Noty({
+    
+                    theme: 'metroui',
+                    text: '<%= flash.error%>',
+                    
+                    type:'error',
+                    layout: 'topLeft',
+                    timeout:3500
+
+                 }).show();
+
+            </script>
+        <%}%>
+   
+
     <body>
         <%- body %>
     <!-- JS, Popper.js, and jQuery -->
@@ -17,6 +58,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Noty SCRIPT  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.2.0-beta/noty.min.js"></script>
     <%- script%>
     </body>
 </html>
